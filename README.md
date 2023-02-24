@@ -21,8 +21,5 @@ ln -s ~/vim-config.git/vimrc ~/.vimrc
 ```
 vim +PlugUpdate --sync +qall
 ```
-* If you want to have coc-ansible, run the following in a Vi session:
-```
-:CocInstall @yaegassy/coc-ansible
-```
+* If you want to have Ansible-related plugins, ensure you have a non-empty ANSIBLE environment variable
 * Enjoy your new 'n shiny editor!

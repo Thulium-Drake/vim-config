@@ -79,9 +79,12 @@ set listchars=tab:▸\ ,eol:¬
 
 " Plugins
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'vim-airline/vim-airline', {'tag': '*'}
 Plug 'godlygeek/tabular', {'branch': 'master'}
 
+if $ANSIBLE != ""
+  Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
+  Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
+endif
 " Do it
 call plug#end()
