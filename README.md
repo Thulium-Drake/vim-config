@@ -21,5 +21,7 @@ ln -s ~/vim-config.git/vimrc ~/.vimrc
 ```
 vim +PlugUpdate --sync +qall
 ```
-* If you want to have Ansible-related plugins, ensure you have a non-empty ANSIBLE environment variable
+* Some plugins require Environment Variables to be set:
+  * coc-nvim requires ```NODEJS != ''```
+  * coc-ansible and ansible-vim requires ```ANSIBLE != ''```
 * Enjoy your new 'n shiny editor!
