@@ -79,7 +79,6 @@ set listchars=tab:▸\ ,eol:¬
 
 " Plugins
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'yaegassy/coc-ansible', {'do': 'yarnpkg install --frozen-lockfile'}
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'vim-airline/vim-airline', {'tag': '*'}
 Plug 'godlygeek/tabular', {'branch': 'master'}
