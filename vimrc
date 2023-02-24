@@ -78,13 +78,17 @@ nnoremap <silent> <C-l> :nohl<CR><C-l>
 set listchars=tab:▸\ ,eol:¬
 
 " Plugins
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'vim-airline/vim-airline', {'tag': '*'}
 Plug 'godlygeek/tabular', {'branch': 'master'}
 
-if $ANSIBLE != ""
+if $NODEJS != ''
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
+
+if $NODEJS != '' && $ANSIBLE != ''
   Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
   Plug 'yaegassy/coc-ansible', {'do': 'yarn install --frozen-lockfile'}
 endif
+
 " Do it
 call plug#end()
