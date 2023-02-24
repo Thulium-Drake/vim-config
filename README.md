@@ -3,7 +3,8 @@
 This is my personal VI setup which I use for most of my daily work
 
 ## Requirements
-* CoC requires nodejs and npm
+* Vim 8 or higher
+* CoC requires nodejs
 * coc-ansible requires ansible-lint and ansible
 
 ## Setup
