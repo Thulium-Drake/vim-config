@@ -38,18 +38,6 @@ let g:coc_filetype_map = {
   \ }
 
 
-" Press enter to accept CoC suggestion
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" command mode: press g + a to trigger codeaction
-nmap <silent> ga <Plug>(coc-codeaction-line)
-" insert mode: press ctrl space to trigger completion
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
 " Hilight trailing whitespace
 highlight WhitespaceEOL ctermbg=red guibg=red
 match WhitespaceEOL /\s\+$/
@@ -82,6 +70,18 @@ Plug 'vim-airline/vim-airline', {'tag': '*'}
 Plug 'godlygeek/tabular', {'branch': 'master'}
 
 if $NODEJS != ''
+  " Press enter to accept CoC suggestion
+  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  " command mode: press g + a to trigger codeaction
+  nmap <silent> ga <Plug>(coc-codeaction-line)
+  " insert mode: press ctrl space to trigger completion
+  if has('nvim')
+    inoremap <silent><expr> <c-space> coc#refresh()
+  else
+    inoremap <silent><expr> <c-@> coc#refresh()
+  endif
+
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
 
