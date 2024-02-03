@@ -32,6 +32,8 @@ hi CocErrorFloat ctermfg=yellow ctermbg=gray
 
 " Set files in playbooks dir to be Ansible YAML
 au BufRead,BufNewFile */playbooks/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile */tasks/*.yml set filetype=yaml.ansible
+au BufRead,BufNewFile */handlers/*.yml set filetype=yaml.ansible
 " Map yaml.ansible to ansible
 let g:coc_filetype_map = {
   \ 'yaml.ansible': 'ansible',
@@ -70,9 +72,13 @@ Plug 'vim-airline/vim-airline', {'tag': '*'}
 Plug 'godlygeek/tabular', {'branch': 'master'}
 
 if $NODEJS != ''
-  " Press enter to accept CoC suggestion
-  inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                                \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  " Press tab to accept CoC suggestion
+  inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#pum#next(1) :
+        \ CheckBackspace() ? "\<Tab>" :
+        \ coc#refresh()
+  inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
   " command mode: press g + a to trigger codeaction
   nmap <silent> ga <Plug>(coc-codeaction-line)
   " insert mode: press ctrl space to trigger completion
@@ -81,6 +87,14 @@ if $NODEJS != ''
   else
     inoremap <silent><expr> <c-@> coc#refresh()
   endif
+
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
+  endfunction
+
+  inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+  inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 endif
